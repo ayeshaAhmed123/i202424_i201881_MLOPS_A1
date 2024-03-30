@@ -1,7 +1,9 @@
 import unittest
 from app import app
 
+
 class TestFlaskApp(unittest.TestCase):
+
     def setUp(self):
         self.app = app.test_client()
 
@@ -14,7 +16,7 @@ class TestFlaskApp(unittest.TestCase):
         }
         response = self.app.post('/predict', json=data)
         self.assertEqual(response.status_code, 200)
-        self.assertIn('prediction', response.json)  # Corrected line
+        self.assertIn('prediction', response.json)
         print("Test 'test_valid_input' passed successfully!")
 
     def test_missing_feature(self):
@@ -37,8 +39,8 @@ class TestFlaskApp(unittest.TestCase):
         }
         response = self.app.post('/predict', json=data)
         self.assertEqual(response.status_code, 400)
-        print("Test 'test_non_numeric_feature' passed successfully!")
+        print("Test 'test_non_numeric_feature' passed successfully!\n")
+
 
 if __name__ == '__main__':
     unittest.main()
-########
